@@ -13,6 +13,10 @@ type person struct {
 	contact   contactInfo
 }
 
+func (p *person) updateName(newFirstName string) {
+	(*p).firstName = newFirstName
+}
+
 func main() {
 	jim := person{
 		firstName: "Jim",
@@ -23,12 +27,6 @@ func main() {
 		},
 	}
 
+	jim.updateName("bob")
 	fmt.Printf("%+v", jim)
-
-	// var alex person
-	// fmt.Printf("%+v", alex)
-	// alex.firstName = "Alex"
-	// alex.lastName = "Bobby"
-
-	// fmt.Println(alex)
 }
