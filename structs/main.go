@@ -17,6 +17,10 @@ func (p *person) updateName(newFirstName string) {
 	(*p).firstName = newFirstName
 }
 
+func (p person) print() {
+	fmt.Println(p)
+}
+
 func main() {
 	jim := person{
 		firstName: "Jim",
@@ -31,11 +35,4 @@ func main() {
 
 	jim.updateName("bob")
 	fmt.Printf("%+v", jim)
-}
-
-func (pointerToperson *person) updateName(newFirstName string) {
-	(*pointerToperson).firstName = newFirstName
-}
-func (p person) print() {
-	fmt.Println("%+v", p)
 }
