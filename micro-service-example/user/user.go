@@ -2,21 +2,21 @@ package user
 
 // User type explains the base of the struct
 type User struct {
-	id string
-	birthday string
-	contact Contact
-	createdAt string
-	firstName string
-	name string
-	followers []User
-	friends []User
-	lastName string
-	updatedAt string
-	username string
+	ID string
+	Birthday string
+	Contact Contact
+	CreatedAt string
+	FirstName string
+	Name string
+	Followers []User
+	Friends []User
+	LastName string
+	UpdatedAt string
+	Username string
 }
 
 // Contact for the 
 type Contact struct {
-	email string
-	phone string
+	Email string
+	Phone string
 }
