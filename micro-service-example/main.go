@@ -7,6 +7,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
 	"errors"
 	"fmt"
+	"./user"
 )
 
 func main()  {
@@ -14,7 +15,7 @@ func main()  {
 	name := "name"
 
 	serviceSession := session.Must(session.NewSessionWithOptions(session.Options {
-    	SharedConfigState: session.SharedConfigEnable,
+		SharedConfigState: session.SharedConfigEnable,
 	}))
 	service := dynamodb.New(serviceSession)
 
@@ -35,13 +36,13 @@ func main()  {
 		fmt.Println(errors.New(msg))
 		// return nil, errors.New(msg)
 	}
-	var currentUser = User{}
-	
+	currentUser := user.User{}
+
 	err = dynamodbattribute.UnmarshalMap(result.Item, &currentUser)
 	if err != nil {
 		panic(fmt.Sprintf("Failed to unmarshal Record, %v", err))
 	}
 
 	fmt.Println("Found item:")
-	fmt.Println("Name:  ", currentUser.name)
+	fmt.Println("Name:  ", currentUser.Name)
 }
