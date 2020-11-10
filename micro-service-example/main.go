@@ -1,9 +1,9 @@
 package main
 
 import (
-    "github.com/aws/aws-sdk-go/aws"
-    "github.com/aws/aws-sdk-go/aws/session"
-    "github.com/aws/aws-sdk-go/service/dynamodb"
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
 	"errors"
 	"fmt"
@@ -12,7 +12,7 @@ import (
 
 func main()  {
 	tableName := "fastify-practice-users"
-	name := "name"
+	name := "Bob"
 
 	serviceSession := session.Must(session.NewSessionWithOptions(session.Options {
 		SharedConfigState: session.SharedConfigEnable,
@@ -22,8 +22,8 @@ func main()  {
 	result, err := service.GetItem(&dynamodb.GetItemInput{
 		TableName: aws.String(tableName),
 		Key: map[string]*dynamodb.AttributeValue{
-			"name": {
-				S: aws.String(name),
+			"id": {
+				S: aws.String("1"),
 			},
 		},
 	})
@@ -42,7 +42,7 @@ func main()  {
 	if err != nil {
 		panic(fmt.Sprintf("Failed to unmarshal Record, %v", err))
 	}
-
+	
 	fmt.Println("Found item:")
 	fmt.Println("Name:  ", currentUser.Name)
 }
