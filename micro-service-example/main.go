@@ -12,7 +12,7 @@ import (
 
 func main()  {
 	tableName := "fastify-practice-users"
-	name := "Bob"
+	name := "name"
 
 	serviceSession := session.Must(session.NewSessionWithOptions(session.Options {
 		SharedConfigState: session.SharedConfigEnable,
